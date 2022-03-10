@@ -2,10 +2,12 @@
 #include <array>
 #include <iostream>
 
-using namespace std;
-
+#include "utils.h"
 #include "degree.h"
 #include "student.h"
+
+using namespace std;
+using namespace util;
 
 void Student::setStudentId(string sId) {
   studentId = sId;
@@ -41,4 +43,49 @@ DegreeProgram Student::getDegreeProgram() {
 
 string Student::getStudentId() {
   return studentId;
+}
+
+string Student::getFirstName() {
+  return firstName;
+}
+
+string Student::getLastName() {
+  return lastName;
+}
+
+string Student::getEmailAddress() {
+  return emailAddress;
+}
+
+int Student::getAge() {
+  return age;
+}
+
+array<int, 3> Student::getCourseDays() {
+  return courseDays;
+}
+
+void Student::print() {
+  array<int, 3> courses = this->getCourseDays();
+  string degree = enumToDegreeString(this->getDegreeProgram());
+
+  string stringAge = to_string(this->getAge());
+  string courseOne = to_string(courses[0]);
+  string courseTwo = to_string(courses[1]);
+  string courseThree = to_string(courses[2]);
+
+  std::string output = this->getStudentId()
+    + "   First Name:   "
+    + this->getFirstName()
+    + "   Last Name:  "
+    + this->getLastName()
+    + "   Age   "
+    + stringAge
+    + "   daysInCourse:   "
+    + "(" + courseOne + ", " + courseTwo + ", " + courseThree + ")"
+    + "  Degree Program:  "
+    + degree;
+
+  cout << output;
+  cout << endl;
 }

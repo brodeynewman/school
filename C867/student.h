@@ -6,6 +6,7 @@ using namespace std;
 
 class Student {
   public:
+    void print();
     string getStudentId();
     string getFirstName();
     string getLastName();

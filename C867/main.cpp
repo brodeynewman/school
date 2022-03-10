@@ -1,5 +1,6 @@
 #include "roster.h"
 #include "degree.h"
+#include "utils.h"
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -7,6 +8,7 @@
 #include <map>
 
 using namespace std;
+using namespace util;
 
 // we are heavily asserting on this format...
 const string studentData[] = {
@@ -26,18 +28,6 @@ void printClassDetails() {
   cout << hr;
   cout << details;
   cout << hr;
-}
-
-DegreeProgram degreeStringToEnum(string degreeProgram) {
-  if (degreeProgram == "SECURITY") {
-    return SECURITY;
-  } else if (degreeProgram == "NETWORK") {
-    return NETWORK;
-  } else if (degreeProgram == "SOFTWARE") {
-    return SOFTWARE;
-  } else {
-    return NOTAPPLICABLE;
-  }
 }
 
 void buildRoster(Roster* roster) {
