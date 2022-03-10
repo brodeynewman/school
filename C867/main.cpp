@@ -64,7 +64,7 @@ int main() {
   Roster classRoster;
   buildRoster(&classRoster);
 
-  // classRoster.printAll();
+  classRoster.printAll();
   classRoster.printInvalidEmails();
   
   return 0;
