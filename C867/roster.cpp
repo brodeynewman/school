@@ -74,5 +74,51 @@ void Roster::printAverageDaysInCourse(string studentId) {
   // throw exception if user does not exist.
   if (found == false) {
     throw invalid_argument("Student with id: " + studentId + " does not exist");
+  } else {
+    // at this point, we can print average course length.
+
+    array<int, 3> classes = student.getCourseDays();
+    
+    int c1 = classes[0];
+    int c2 = classes[1];
+    int c3 = classes[2];
+
+    int avg = (c1 + c2 + c3) / 3;
+
+    cout << "Average days in course for student id " + studentId + ": ";
+    cout << to_string(avg);
+    cout << endl;
+  }
+}
+
+void Roster::forEach(void (*callback)(Roster*, Student)){
+  for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
+    callback(this, classRosterArray[i]);
+  }
+}
+
+void Roster::remove(string studentId) {
+  Student student;
+  bool found = false;
+  int foundInd;
+
+  for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
+    if (classRosterArray[i].getStudentId() == studentId) {
+      student = classRosterArray[i];
+      found = true;
+      foundInd = i;
+      break;
+    }
+  }
+
+  if (found == false) {
+    throw invalid_argument("Student with id: " + studentId + " does not exist");
+  } else {
+    // remove our student from the vector
+
+    classRosterArray.erase(classRosterArray.begin() + foundInd);
+
+    cout << "Student with id: " + studentId + " successfully removed";
+    cout << endl;
   }
 }

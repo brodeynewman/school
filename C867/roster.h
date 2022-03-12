@@ -15,6 +15,8 @@ class Roster {
     void printInvalidEmails();
     void printByDegreeProgram();
 
+    void forEach(void (*f) (Roster*, Student));
+
   private:
     vector<Student> classRosterArray;
 };

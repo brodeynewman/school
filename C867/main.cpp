@@ -58,6 +58,12 @@ void buildRoster(Roster* roster) {
   }
 }
 
+void printAverageDaysInCourseForStudent(Roster* roster, Student student) {
+  string studentId = student.getStudentId();
+
+  roster->printAverageDaysInCourse(studentId);
+}
+
 int main() {
   printClassDetails();
 
@@ -67,7 +73,14 @@ int main() {
   classRoster.printAll();
   classRoster.printInvalidEmails();
 
-  classRoster.printAverageDaysInCourse("A1");
+  // This is probably overkill, but I wanted to experiment with callbacks in c++. :)
+  // Please don't fail me for this. Heh.
+  classRoster.forEach(&printAverageDaysInCourseForStudent);
+
+  // remove some students from the roster
+  classRoster.remove("A3");
+  classRoster.printAll();
+  classRoster.remove("A3");
   
   return 0;
 }
