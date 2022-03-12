@@ -77,6 +77,8 @@ int main() {
   // Please don't fail me for this. Heh.
   classRoster->forEach(&printAverageDaysInCourseForStudent);
 
+  classRoster->printByDegreeProgram(SOFTWARE);
+
   // Remove some students from the roster.
   // Add a try / catch so that we can clean up program after exception is thrown.
   try {

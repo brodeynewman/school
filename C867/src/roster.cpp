@@ -17,18 +17,12 @@ bool checkValidEmail(string email) {
 }
 
 void Roster::add(string studentId, string firstName, string lastName, string email, int age, int courseOne, int courseTwo, int courseThree, DegreeProgram degreeProgram) {
-  Student* student = new Student;
-
   array<int, 3> courses = {courseOne, courseTwo, courseThree};
 
-  student->setStudentId(studentId);
-  student->setFirstName(firstName);
-  student->setLastName(lastName);
-  student->setEmailAddress(email);
-  student->setAge(age);
-  student->setCourseDays(courses);
-  student->setDegreeProgram(degreeProgram);
+  // init new student
+  Student* student = new Student(studentId, firstName, lastName, email, age, courses, degreeProgram);
 
+  // push student into our vector list
   classRosterArray.push_back(student);
 }
 
@@ -122,7 +116,21 @@ void Roster::remove(string studentId) {
   }
 }
 
+void Roster::printByDegreeProgram(DegreeProgram program) {
+  cout << "Printing students by program..." << endl;
+  
+  for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
+    // loop through each student & print the details
+    if (classRosterArray[i]->getDegreeProgram() == program) {
+      classRosterArray[i]->print();
+    }
+  }
+}
+
+// destructor function
 Roster::~Roster() {
+  cout << "Cleaning up memory..." << endl;
+
   for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
     Student* student = classRosterArray[i];
 

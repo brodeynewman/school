@@ -13,7 +13,7 @@ class Roster {
     void printAll();
     void printAverageDaysInCourse(string);
     void printInvalidEmails();
-    void printByDegreeProgram();
+    void printByDegreeProgram(DegreeProgram);
 
     // destructor
     ~Roster();

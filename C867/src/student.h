@@ -7,6 +7,7 @@ using namespace std;
 class Student {
   public:
     void print();
+    Student(string, string, string, string, int, array<int, 3>, DegreeProgram);
     string getStudentId();
     string getFirstName();
     string getLastName();

@@ -79,7 +79,7 @@ void Student::print() {
     + this->getFirstName()
     + "   Last Name:  "
     + this->getLastName()
-    + "   Age   "
+    + "   Age:  "
     + stringAge
     + "   daysInCourse:   "
     + "(" + courseOne + ", " + courseTwo + ", " + courseThree + ")"
@@ -88,4 +88,15 @@ void Student::print() {
 
   cout << output;
   cout << endl;
+}
+
+// constructor
+Student::Student(string id, string fName, string lName, string email, int studentAge, array<int, 3> courses, DegreeProgram degree) {
+  studentId = id;
+  firstName = fName;
+  lastName = lName;
+  emailAddress = email;
+  age = studentAge;
+  courseDays = courses;
+  degreeProgram = degree;
 }
