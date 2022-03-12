@@ -58,8 +58,8 @@ void buildRoster(Roster* roster) {
   }
 }
 
-void printAverageDaysInCourseForStudent(Roster* roster, Student student) {
-  string studentId = student.getStudentId();
+void printAverageDaysInCourseForStudent(Roster* roster, Student* student) {
+  string studentId = student->getStudentId();
 
   roster->printAverageDaysInCourse(studentId);
 }
@@ -67,20 +67,29 @@ void printAverageDaysInCourseForStudent(Roster* roster, Student student) {
 int main() {
   printClassDetails();
 
-  Roster classRoster;
-  buildRoster(&classRoster);
+  Roster* classRoster = new Roster;
+  buildRoster(classRoster);
 
-  classRoster.printAll();
-  classRoster.printInvalidEmails();
+  classRoster->printAll();
+  classRoster->printInvalidEmails();
 
   // This is probably overkill, but I wanted to experiment with callbacks in c++. :)
   // Please don't fail me for this. Heh.
-  classRoster.forEach(&printAverageDaysInCourseForStudent);
+  classRoster->forEach(&printAverageDaysInCourseForStudent);
 
-  // remove some students from the roster
-  classRoster.remove("A3");
-  classRoster.printAll();
-  classRoster.remove("A3");
+  // Remove some students from the roster.
+  // Add a try / catch so that we can clean up program after exception is thrown.
+  try {
+    classRoster->remove("A3");
+    classRoster->printAll();
+    classRoster->remove("A3");
+  }
+  catch (exception& e) {
+    cout << "ERROR: " << e.what() << '\n';
+  }
+
+  // clean up memory
+  delete classRoster;
   
   return 0;
 }

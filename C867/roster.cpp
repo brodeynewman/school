@@ -17,17 +17,17 @@ bool checkValidEmail(string email) {
 }
 
 void Roster::add(string studentId, string firstName, string lastName, string email, int age, int courseOne, int courseTwo, int courseThree, DegreeProgram degreeProgram) {
-  Student student;
+  Student* student = new Student;
 
   array<int, 3> courses = {courseOne, courseTwo, courseThree};
 
-  student.setStudentId(studentId);
-  student.setFirstName(firstName);
-  student.setLastName(lastName);
-  student.setEmailAddress(email);
-  student.setAge(age);
-  student.setCourseDays(courses);
-  student.setDegreeProgram(degreeProgram);
+  student->setStudentId(studentId);
+  student->setFirstName(firstName);
+  student->setLastName(lastName);
+  student->setEmailAddress(email);
+  student->setAge(age);
+  student->setCourseDays(courses);
+  student->setDegreeProgram(degreeProgram);
 
   classRosterArray.push_back(student);
 }
@@ -35,7 +35,7 @@ void Roster::add(string studentId, string firstName, string lastName, string ema
 void Roster::printAll() {
   for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
     // loop through each student & print the details
-    classRosterArray[i].print();
+    classRosterArray[i]->print();
   }
 }
 
@@ -43,7 +43,7 @@ void Roster::printInvalidEmails() {
   vector<string> invalidEmails;
 
   for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
-    string email = classRosterArray[i].getEmailAddress();
+    string email = classRosterArray[i]->getEmailAddress();
 
     if (!checkValidEmail(email)) {
       invalidEmails.push_back(email);
@@ -60,11 +60,11 @@ void Roster::printInvalidEmails() {
 }
 
 void Roster::printAverageDaysInCourse(string studentId) {
-  Student student;
+  Student* student;
   bool found = false;
 
   for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
-    if (classRosterArray[i].getStudentId() == studentId) {
+    if (classRosterArray[i]->getStudentId() == studentId) {
       student = classRosterArray[i];
       found = true;
       break;
@@ -77,7 +77,7 @@ void Roster::printAverageDaysInCourse(string studentId) {
   } else {
     // at this point, we can print average course length.
 
-    array<int, 3> classes = student.getCourseDays();
+    array<int, 3> classes = student->getCourseDays();
     
     int c1 = classes[0];
     int c2 = classes[1];
@@ -91,19 +91,19 @@ void Roster::printAverageDaysInCourse(string studentId) {
   }
 }
 
-void Roster::forEach(void (*callback)(Roster*, Student)){
+void Roster::forEach(void (*callback)(Roster*, Student*)){
   for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
     callback(this, classRosterArray[i]);
   }
 }
 
 void Roster::remove(string studentId) {
-  Student student;
+  Student* student;
   bool found = false;
   int foundInd;
 
   for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
-    if (classRosterArray[i].getStudentId() == studentId) {
+    if (classRosterArray[i]->getStudentId() == studentId) {
       student = classRosterArray[i];
       found = true;
       foundInd = i;
@@ -120,5 +120,14 @@ void Roster::remove(string studentId) {
 
     cout << "Student with id: " + studentId + " successfully removed";
     cout << endl;
+  }
+}
+
+Roster::~Roster() {
+  for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
+    Student* student = classRosterArray[i];
+
+    // delete every student in our vector list.
+    delete student;
   }
 }
