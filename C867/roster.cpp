@@ -115,7 +115,6 @@ void Roster::remove(string studentId) {
     throw invalid_argument("Student with id: " + studentId + " does not exist");
   } else {
     // remove our student from the vector
-
     classRosterArray.erase(classRosterArray.begin() + foundInd);
 
     cout << "Student with id: " + studentId + " successfully removed";
