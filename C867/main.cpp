@@ -66,6 +66,8 @@ int main() {
 
   classRoster.printAll();
   classRoster.printInvalidEmails();
+
+  classRoster.printAverageDaysInCourse("A1");
   
   return 0;
 }

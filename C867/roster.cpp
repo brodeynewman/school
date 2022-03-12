@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <regex>
+#include <stdexcept>
 
 #include "roster.h"
 #include "degree.h"
@@ -52,8 +53,26 @@ void Roster::printInvalidEmails() {
   for(std::vector<string>::size_type i = 0; i != invalidEmails.size(); i++) {
     string invalidEmail = invalidEmails[i];
 
-    cout << "Invalid: ";
+    cout << "Invalid email: ";
     cout << invalidEmail;
     cout << endl;
+  }
+}
+
+void Roster::printAverageDaysInCourse(string studentId) {
+  Student student;
+  bool found = false;
+
+  for(std::vector<Student*>::size_type i = 0; i != classRosterArray.size(); i++) {
+    if (classRosterArray[i].getStudentId() == studentId) {
+      student = classRosterArray[i];
+      found = true;
+      break;
+    }
+  }
+
+  // throw exception if user does not exist.
+  if (found == false) {
+    throw invalid_argument("Student with id: " + studentId + " does not exist");
   }
 }
