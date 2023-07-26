@@ -25,6 +25,8 @@
 # The graph will be a weighted graph and will include distances between points as the weights.
 
 from package import Package
+from truck import Truck
+from manager import Manager
 
 packages = [
   Package(1, "195 W Oakland Ave", "Salt Lake City", "UT", "84115", "12/31/1899 10:30:00 AM", 21, ""),
@@ -37,9 +39,48 @@ packages = [
   Package(8, "300 State St", "Salt Lake City", "UT", "84103", "EOD", 9, ""),
   Package(9, "300 State St", "Salt Lake City", "UT", "84103", "EOD", 2, ""),
   Package(10, "600 E 900 South", "Salt Lake City", "UT", "84105", "EOD", 1, ""),
+  Package(11, "2600 Taylorsville Blvd", "Salt Lake City", "UT", "84118", "EOD", 1, ""),
+  Package(12, "3575 W Valley Central Station bus Loop", "West Valley City", "UT", "84119", "EOD", 1, ""),
+  Package(13, "2010 W 500 S", "Salt Lake City", "UT", "84104", "12/31/1899 10:30:00 AM", 2, ""),
+  Package(14, "4300 S 1300 E", "Millcreek", "UT", "84117", "12/31/1899 10:30:00 AM", 88, "Must be delivered with 15, 19"),
+  Package(15, "4580 S 2300 E", "Holladay", "UT", "84117", "12/31/1899 9:00:00 AM", 4, ""),
+  Package(16, "4580 S 2300 E", "Holladay", "UT", "84117", "12/31/1899 10:30:00 AM", 88, "Must be delivered with 13, 19"),
+  Package(17, "3148 S 1100 W", "Salt Lake City", "UT", "84119", "EOD", 2, ""),
+  Package(18, "1488 4800 S", "Salt Lake City", "UT", "84123", "EOD", 6, "Can only be on truck 2"),
+  Package(19, "177 W Price Ave", "Salt Lake City", "UT", "84115", "EOD", 37, ""),
+  Package(20, "3595 Main St", "Salt Lake City", "UT", "84115", "12/31/1899 10:30:00 AM", 37, "Must be delivered with 13, 15"),
+  Package(21, "3595 Main St", "Salt Lake City", "UT", "84115", "EOD", 3, ""),
+  Package(22, "6351 South 900 East", "Murray", "UT", "84121", "EOD", 2, ""),
+  Package(23, "5100 South 2700 West", "Salt Lake City", "UT", "84118", "EOD", 5, ""),
+  Package(24, "5025 State St", "Murray", "UT", "84107", "EOD", 7, ""),
+  Package(25, "5383 South 900 East #104", "Salt Lake City", "UT", "84117", "12/31/1899 10:30:00 AM", 7, "Delayed on flight---will not arrive to depot until 9:05 am"), 
+  Package(26, "5383 South 900 East #104", "Salt Lake City", "UT", "84117", "EOD", 25, ""),
+  Package(27, "1060 Dalton Ave S", "Salt Lake City", "UT", "84104", "EOD", 5, ""),
+  Package(28, "2835 Main St", "Salt Lake City", "UT", "84115", "EOD", 7, "Delayed on flight---will not arrive to depot until 9:05 am"),
+  Package(29, "1330 2100 S", "Salt Lake City", "UT", "84106", "12/31/1899 10:30:00 AM", 2, ""),
+  Package(30, "300 State St", "Salt Lake City", "UT", "84103", "12/31/1899 10:30:00 AM", 1, ""),
+  Package(31, "3365 S 900 W", "Salt Lake City", "UT", "84119", "12/31/1899 10:30:00 AM", 1, ""),
+  Package(32, "3365 S 900 W", "Salt Lake City", "UT", "84119", "EOD", 1, "Delayed on flight---will not arrive to depot until 9:05 am"),
+  Package(33, "2530 S 500 E", "Salt Lake City", "UT", "84106", "EOD", 1, ""),
+  Package(34, "4580 S 2300 E", "Holladay", "UT", "84117", "12/31/1899 10:30:00 AM", 2, ""),
+  Package(35, "1060 Dalton Ave S", "Salt Lake City", "UT", "84104", "12/31/1899 10:30:00 AM", 88, ""),
+  Package(36, "2300 Parkway Blvd", "West Valley City", "UT", "84119", "EOD", 88, "Can only be on truck 2"),
+  Package(37, "410 S State St", "Salt Lake City", "UT", "84111", "12/31/1899 10:30:00 AM", 88, ""),
+  Package(38, "410 S State St", "Salt Lake City", "UT", "84111", "EOD", 9, "Can only be on truck 2"),
+  Package(39, "2010 W 500 S", "Salt Lake City", "UT", "84104", "EOD", 9, ""),
+  Package(40, "380 W 2880 S", "Salt Lake City", "UT", "84115", "12/31/1899 10:30:00 AM", 45, ""),
 ]
 
 def main():
   print("hello")
+
+  trucks = [
+    Truck([]),
+    Truck([]),
+    Truck([]),
+  ]
+
+  manager = Manager(trucks, packages)
+  manager.start()
 
 main()
