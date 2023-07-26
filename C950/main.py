@@ -27,6 +27,7 @@
 from package import Package
 from truck import Truck
 from manager import Manager
+from location import Location, LocationGraph
 
 packages = [
   Package(1, "195 W Oakland Ave", "Salt Lake City", "UT", "84115", "12/31/1899 10:30:00 AM", 21, ""),
@@ -71,15 +72,24 @@ packages = [
   Package(40, "380 W 2880 S", "Salt Lake City", "UT", "84115", "12/31/1899 10:30:00 AM", 45, ""),
 ]
 
+locations = [
+  # hub location
+  Location("Western Governors University", "4001 South 700 East"),
+  Location("International Peace Gardens", " 1060 Dalton Ave S"),
+  Location("Sugar House Park", " 1060 Dalton Ave S"),
+]
+
 def main():
   print("hello")
 
+  # initialize 3 trucks that will be used by our manager to coordinate package deliveries
   trucks = [
     Truck([]),
     Truck([]),
     Truck([]),
   ]
 
+  # tell our manager about the trucks, packages & locations available
   manager = Manager(trucks, packages)
   manager.start()
 
