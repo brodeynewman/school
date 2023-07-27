@@ -12,5 +12,13 @@ class Manager:
     print("sorting...")
 
   def start(self):
-    self.distribute_packages()
+    for key in self.map.vertices:
+      if key.address == "1060 Dalton Ave S":
+        print("bingo:", key.name)
+
+        for route, value in key.routes.items():
+          print("route:::", route.address)
+
+          if route.address == "3595 Main St":
+            print("DURATION:::", value)
     

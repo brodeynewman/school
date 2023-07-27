@@ -73,7 +73,7 @@ packages = [
 ]
 
 # hub location, aka start
-hub = Location("Western Governors University", "4001 South 700 East")
+hub = Location("hub", "4001 South 700 East")
 peaceGarden = Location("International Peace Gardens", "1060 Dalton Ave S")
 sugarHouse = Location("Sugar House Park", " 1060 Dalton Ave S")
 hertigageCityGov = Location("Taylorsville-Bennion Heritage City Gov Off", "1488 4800 S")
@@ -514,8 +514,6 @@ def createMap():
   return map
 
 def main():
-  print("hello")
-
   # initialize 3 trucks that will be used by our manager to coordinate package deliveries
   trucks = [
     Truck([]),
