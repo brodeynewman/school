@@ -72,12 +72,44 @@ packages = [
   Package(40, "380 W 2880 S", "Salt Lake City", "UT", "84115", "12/31/1899 10:30:00 AM", 45, ""),
 ]
 
-locations = [
-  # hub location
-  Location("Western Governors University", "4001 South 700 East"),
-  Location("International Peace Gardens", " 1060 Dalton Ave S"),
-  Location("Sugar House Park", " 1060 Dalton Ave S"),
-]
+# hub location, aka start
+hub = Location("Western Governors University", "4001 South 700 East")
+peaceGarden = Location("International Peace Gardens", "1060 Dalton Ave S")
+sugarHouse = Location("Sugar House Park", " 1060 Dalton Ave S")
+hertigageCityGov = Location("Taylorsville-Bennion Heritage City Gov Off", "1488 4800 S")
+healthServices = Location("Salt Lake City Division of Health Services", "177 W Price Ave")
+publicWorks = Location("South Salt Lake Public Works", "195 W Oakland Ave")
+streetsAndSanitation = Location("Salt Lake City Streets and Sanitation", "2010 W 500 S")
+dekerLake = Location("Deker Lake", "2300 Parkway Blvd")
+ottingerHall = Location("Salt Lake City Ottinger Hall", "233 Canyon Rd")
+columbusLibrary = Location("Columbus Library", "2530 S 500 E")
+taylorsvilleCityHall = Location("Taylorsville City Hall", "2600 Taylorsville Blvd")
+southSaltPolice = Location("South Salt Lake Police", "2835 Main St")
+councilHall = Location("Council Hall", "300 State St")
+redwoodPark = Location("Redwood Park", "3060 Lester St")
+slcMentalHealth = Location("Salt Lake County Mental Health", "3148 S 1100 W")
+slcPolice = Location("Salt Lake County/United Police Dept", "3365 S 900 W")
+westValleyProsecutor = Location("West Valley Prosecutor", " 3575 W Valley Central Station bus Loop")
+slcHousingAuth = Location("Housing Auth. of Salt Lake County", "3595 Main St")
+dmv = Location("Utah DMV Administrative Office", "380 W 2880 S")
+juvenileCourt = Location("Third District Juvenile Court", "410 S State St")
+cottonwoodSoftball = Location("Cottonwood Regional Softball Complex", "4300 S 1300 E")
+holidayCityOffice = Location("Holiday City Office", "4580 S 2300 E")
+murrayMuseum = Location("Murray City Museum", "5025 State St")
+vrSoftball = Location("Valley Regional Softball Complex", " 5100 South 2700 West")
+rockSprings = Location("City Center of Rock Springs", "5383 S 900 East #104")
+rtPaviliionPark = Location("Rice Terrace Pavilion Park", "600 E 900 South")
+historicalFarm = Location("Wheeler Historic Farm", "6351 South 900 East")
+
+def createMap():
+  map = LocationGraph()
+
+  # add all of our map vertexes (locations)
+  map.add_vertex(hub)
+  map.add_vertex(peaceGarden)
+  map.add_vertex(sugarHouse)
+
+  return map
 
 def main():
   print("hello")
@@ -89,8 +121,10 @@ def main():
     Truck([]),
   ]
 
+  map = createMap()
+
   # tell our manager about the trucks, packages & locations available
-  manager = Manager(trucks, packages)
+  manager = Manager(trucks, packages, map)
   manager.start()
 
 main()

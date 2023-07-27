@@ -1,8 +1,8 @@
 class Manager:
-  def __init__(self, trucks, packages, locations = []):
+  def __init__(self, trucks, packages, map):
     self.trucks = trucks
     self.packages = packages
-    self.locations = locations
+    self.map = map
 
   def distribute_packages(self):
     for truck in self.trucks:
