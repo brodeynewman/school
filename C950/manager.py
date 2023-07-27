@@ -13,12 +13,10 @@ class Manager:
 
   def start(self):
     for key in self.map.vertices:
-      if key.address == "1060 Dalton Ave S":
+      if key.address == "6351 South 900 East":
         print("bingo:", key.name)
 
         for route, value in key.routes.items():
-          print("route:::", route.address)
-
-          if route.address == "3595 Main St":
+          if route.address == "4001 South 700 East":
             print("DURATION:::", value)
     
