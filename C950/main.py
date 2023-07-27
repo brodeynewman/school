@@ -106,8 +106,59 @@ def createMap():
 
   # add all of our map vertexes (locations)
   map.add_vertex(hub)
+  map.add_edge(hub, peaceGarden, 7.2)
+
   map.add_vertex(peaceGarden)
+  map.add_edge(peaceGarden, hub, 7.2)
+
   map.add_vertex(sugarHouse)
+  map.add_edge(sugarHouse, hub, 3.8)
+  map.add_edge(sugarHouse, peaceGarden, 7.1)
+
+  map.add_vertex(hertigageCityGov)
+  map.add_edge(hertigageCityGov, hub, 11.0)
+  map.add_edge(hertigageCityGov, peaceGarden, 6.4)
+  map.add_edge(hertigageCityGov, peaceGarden, 9.2)
+
+  map.add_vertex(healthServices)
+  map.add_edge(healthServices, hub, 2.2)
+  map.add_edge(healthServices, peaceGarden, 6.0)
+  map.add_edge(healthServices, sugarHouse, 4.4)
+  map.add_edge(healthServices, sugarHouse, 5.6)
+
+  map.add_vertex(publicWorks)
+  map.add_edge(publicWorks, hub, 3.5)
+  map.add_edge(publicWorks, peaceGarden, 4.8)
+  map.add_edge(publicWorks, sugarHouse, 2.8)
+  map.add_edge(publicWorks, sugarHouse, 6.9)
+  map.add_edge(publicWorks, healthServices, 1.9)
+
+  map.add_vertex(streetsAndSanitation)
+  map.add_edge(streetsAndSanitation, hub, 10.9)
+  map.add_edge(streetsAndSanitation, peaceGarden, 1.6)
+  map.add_edge(streetsAndSanitation, sugarHouse, 8.6)
+  map.add_edge(streetsAndSanitation, sugarHouse, 8.6)
+  map.add_edge(streetsAndSanitation, healthServices, 7.9)
+  map.add_edge(streetsAndSanitation, publicWorks, 6.3)
+
+  map.add_vertex(dekerLake)
+  map.add_edge(dekerLake, hub, 8.6)
+  map.add_edge(dekerLake, peaceGarden, 2.8)
+  map.add_edge(dekerLake, sugarHouse, 6.3)
+  map.add_edge(dekerLake, sugarHouse, 4.0)
+  map.add_edge(dekerLake, healthServices, 5.1)
+  map.add_edge(dekerLake, publicWorks, 4.3)
+  map.add_edge(dekerLake, streetsAndSanitation, 4.0)
+
+  map.add_vertex(ottingerHall)
+  map.add_edge(ottingerHall, hub, 7.6)
+  map.add_edge(ottingerHall, peaceGarden, 4.8)
+  map.add_edge(ottingerHall, sugarHouse, 5.3)
+  map.add_edge(ottingerHall, sugarHouse, 11.1)
+  map.add_edge(ottingerHall, healthServices, 7.5)
+  map.add_edge(ottingerHall, publicWorks, 4.5)
+  map.add_edge(ottingerHall, streetsAndSanitation, 4.2)
+  map.add_edge(ottingerHall, dekerLake, 7.7)
 
   return map
 
