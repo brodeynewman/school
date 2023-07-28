@@ -21,7 +21,7 @@
 # 10. The day ends when all 40 packages have been delivered.
 
 # Algorithms:
-# I'll be using A* as the finding algorithm. I plan to convert each delivery location to a vertex in the graph.
+# I'll be using nearest neighbord alg. I plan to convert each delivery location to a vertex in the graph.
 # The graph will be a weighted graph and will include distances between points as the weights.
 
 from package import Package
