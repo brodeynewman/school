@@ -516,9 +516,9 @@ def createMap():
 def main():
   # initialize 3 trucks that will be used by our manager to coordinate package deliveries
   trucks = [
-    Truck([]),
-    Truck([]),
-    Truck([]),
+    Truck(),
+    Truck(),
+    Truck(),
   ]
 
   map = createMap()
