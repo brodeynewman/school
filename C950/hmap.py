@@ -1,3 +1,5 @@
+# This hmap uses linear probing to account for collisions
+# This is usually O(n) lookups & sets
 class HashMap(object):
   def __init__(self, size = 16):
     self.count = 0
@@ -17,12 +19,14 @@ class HashMap(object):
   def set(self, key, value):
     hash = self.hash(key)
 
+    # check if our hashmap has a slot
     if self.keys[hash] is None: 
       self.keys[hash] = key
       self.items[hash] = value
       self.count += 1
 
       return True
+    # check if our hashmap has a slot
     else:
       if self.keys[hash] == key:
         self.items[hash] = value
@@ -31,9 +35,10 @@ class HashMap(object):
       else:
         rehash = self.rehash(hash)
 
-        # keep trying...
+        # keep trying if we collide
         while (not self.keys[rehash] is None) and (rehash != hash):
           rehash = self.rehash(rehash)
+
         # Double check if we found an empty spot.
         if self.keys[rehash] is None: 
           self.keys[rehash] = key

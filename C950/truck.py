@@ -51,7 +51,7 @@ class Truck:
     if len(payload) > MAX_PACKAGE_SIZE:
       # i'm too lazy to format this constant within the error
       raise Exception("Truck can not carry more than 16 packages")
-    
+
     packages = []
 
     # set our packages in our package hashmap
