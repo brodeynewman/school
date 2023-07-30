@@ -45,6 +45,7 @@ def show_statuses(manager):
   
   p_input = input('Enter a package ID. Enter "all" to see every package for the given time: ')
 
+  # if user enters all, we tell our manager to print everything
   if p_input == ALL:
     manager.show_status_of_all(combined)
   else:
@@ -59,6 +60,7 @@ option_map = {
 def init_prompt(manager):
   option = input("Choose an option: [mileage, statuses]: ")
 
+  # simple abstraction for user input
   func = option_map.get(option)
 
   if func is None:
