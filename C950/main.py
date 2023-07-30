@@ -119,7 +119,7 @@ def main():
       Package(27, "1060 Dalton Ave S", "Salt Lake City", "84104", "EOD", 5, ""),
       Package(12, "3575 W Valley Central Station bus Loop", "West Valley City", "84119", "EOD", 1, ""),
       Package(39, "2010 W 500 S", "Salt Lake City", "84104", "EOD", 9, ""),
-      # 10:20am start
+      # 10:20am start min
     ], get_manager_start_time() + timedelta(hours=2, minutes=20)),
   ]
 

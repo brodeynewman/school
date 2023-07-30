@@ -14,11 +14,8 @@ class Truck:
 
     self.packages = None
     self.total_packages = 0
-
     self.miles_traveled = 0
-    self.packages_delivered = 0
     self.package_index = 0
-    self.total_packages = None
 
     self.map = map
 
@@ -70,13 +67,14 @@ class Truck:
     self.total_packages = len(packages)
 
   def __find_target(self):
-    # Put all vertices in an unvisited queue.
     lowest_target_location = None
     lowest_weight = None
     target_package = None
 
     print(f'Analyzing current address: {self.current_location.address}', end='\n')
 
+    # We loop through each undelivered package and find the closest one to the current address
+    # This entire process is O(n^2)
     for package in self.packages:
       # we're already at the target location; we can deliver the packages instantly
       if package.address == self.current_location.address:
@@ -86,9 +84,11 @@ class Truck:
 
         break
 
+      # do a lookup in our graph to find the package address
       location = self.map.find_node(package.address)
+      # grab the weight of the next potential location
       weight = self.current_location.routes[location]
-
+      
       if lowest_weight == None or weight < lowest_weight:
         lowest_weight = weight
         target_package = package
@@ -102,14 +102,16 @@ class Truck:
 
   def is_complete(self):
     return len(self.packages) == 0
-  
+
   def __remove_package(self, id):
     self.packages = list(filter(lambda p: p.id != id, self.packages))
-  
+
   def deliver_latest(self):
     print(f'Delivering package: {self.package_index} of {self.total_packages}', end='\n')
 
+    # this is the nearest neighbor logic
     target = self.__find_target()
+
     new_loc = target.get('location')
     new_weight = target.get('weight')
     package = target.get('package')

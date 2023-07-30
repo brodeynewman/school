@@ -77,6 +77,7 @@ class Manager:
   def deliver(self):
     latest_complete_time = None
 
+    # keep delivering packages until all trucks are complete
     while not all(truck.is_complete() for truck in self.trucks):
       print("Not all trucks are complete. Routing...")
 
@@ -84,11 +85,12 @@ class Manager:
 
       # only run two trucks at a time
       for truck in incomplete_trucks[:2]:
-         # set the latest departed time if one exists
-         truck.maybe_depart(latest_complete_time)
-         truck.deliver_latest()
+        # set the latest departed time if one exists
+        truck.maybe_depart(latest_complete_time)
+        truck.deliver_latest()
 
-         if truck.is_complete():
-           latest_complete_time = truck.current_time
+        if truck.is_complete():
+          # gets the latest completion time so that a new truck can start
+          latest_complete_time = truck.current_time
     
     self.__show_results()
