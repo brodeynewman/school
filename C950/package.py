@@ -1,7 +1,3 @@
-END_OF_DAY = "EOD"
-STATUS_EN_ROUTE = 'en_route'
-STATUS_DELIVERED = 'delivered'
-
 class Package:
   def __init__(self, id, address, city, zip, delivery_deadline, weight, notes):
     self.id = id
@@ -14,7 +10,6 @@ class Package:
     self.delivery_time = None
 
   def set_delivered_time(self, delivery_time):
-    self.status = STATUS_DELIVERED
     self.delivery_time = delivery_time
 
   def get_status_by_time(self, time):
