@@ -13,12 +13,6 @@ class Package:
     self.notes = notes
     self.delivery_time = None
 
-  def has_deadline(self):
-    return self.delivery_deadline != END_OF_DAY
-
-  def get_deadline(self):
-    return self.delivery_deadline
-
   def set_delivered_time(self, delivery_time):
     self.status = STATUS_DELIVERED
     self.delivery_time = delivery_time
