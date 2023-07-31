@@ -59,6 +59,10 @@ class Truck:
       self.pmap.set(package.id, package)
 
       p = self.pmap.get(package.id)
+
+      # once we load our packages, we set the departure time to be the
+      # time the truck should leave the lot
+      p.set_departure_time(self.min_start_time)
       # keep a cache of all of the packages we hit
       self.pcache.append(p)
       packages.append(p)

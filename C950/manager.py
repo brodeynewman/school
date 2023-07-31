@@ -13,19 +13,10 @@ class Manager:
 
       print(log)
 
-  def __get_package_status(self, truck, package, time):
-    # if the time inputted by the user was before the truck even left, then it's obviously still at the hub
-    if truck.start_time >= time:
-      status = "At Hub"
-    else:
-      status = package.get_status_by_time(time)
-
-    return status
-
   def show_status_of_all(self, time):
     for truck in self.trucks:
       for package in truck.pcache:
-        status = self.__get_package_status(truck, package, time)
+        status = package.get_status_by_time(time)
 
         print(f'Package id: [{package.id}] delivery status: [{status}]', end='\n')
 
@@ -34,11 +25,7 @@ class Manager:
       package = truck.get_package(pid)
 
       if package != None:
-        status = self.__get_package_status(truck, package, time)
-
-        # print our package information
-        print(f'Package id: [{package.id}] delivery status: [{status}]', end='\n')
-        print(package)
+        package.print(time)
         exit()
       
     raise Exception("Package not found")

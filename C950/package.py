@@ -8,6 +8,10 @@ class Package:
     self.weight = weight
     self.notes = notes
     self.delivery_time = None
+    self.departure_time = None
+
+  def set_departure_time(self, depart_time):
+    self.departure_time = depart_time
 
   def set_delivered_time(self, delivery_time):
     self.delivery_time = delivery_time
@@ -15,9 +19,24 @@ class Package:
   def get_status_by_time(self, time):
     if self.delivery_time < time:
       return "Delivered"
+    elif time < self.departure_time:
+      return "At Hub"
 
     return "En Route"
   
-  def __str__(self):
-    return "%s, %s, %s, %s, %s, %s, %s" % (self.id, self.address, self.city, self.zip, self.delivery_deadline, self.weight, self.delivery_time)
+  def print(self, time):
+    log = f'''
+      Package Information:
+
+        ID: {self.id}
+        Address: {self.address}
+        City: {self.city}
+        Zip: {self.zip}
+        Weight: {self.weight}
+        Delivery Deadline: {self.delivery_deadline}
+        Delivery Time: {self.delivery_time}
+        Status: {self.get_status_by_time(time)}
+    '''
+
+    print(log)
 
